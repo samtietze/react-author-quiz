@@ -6,7 +6,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class AuthorQuiz extends Component {
   render() {
     return (
-      <div>Author Quiz</div>
+      <div className="container-fluid">
+        <Hero />
+        <Turn />
+        <Continue />
+      </div>
     );
   }
 }
