@@ -32,8 +32,18 @@ function Turn({ author, books }) {
         <img src={author.imageUrl} className="authorimage" alt="Author" />
       </div>
       <div className="col-6">
-        {books.map(title => returnTitle(title))}
+        {books.map(title => <Book title={title} key={title} />)}
       </div>
+    </div>
+  );
+}
+
+function Book({ title }) {
+  return (
+    <div className="answer">
+      <h4>
+        {title}
+      </h4>
     </div>
   );
 }
@@ -58,17 +68,15 @@ function Footer() {
   );
 }
 
-class AuthorQuiz extends Component {
-  render() {
-    return (
-      <div className="container-fluid">
-        <Hero />
-        <Turn />
-        <Continue />
-        <Footer />
-      </div>
-    );
-  }
+function AuthorQuiz({ turnData }) {
+  return (
+    <div className="container-fluid">
+      <Hero />
+      <Turn {...turnData} />
+      <Continue />
+      <Footer />
+    </div>
+  );
 }
 
 export default AuthorQuiz;
