@@ -3,23 +3,39 @@ import './AuthorQuiz.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function Hero() {
-  return (<div className="row">
-    <div className="jumbotron col-10 offset-1">
-      <h1>Author Quiz</h1>
-      <p>Select the book written by the author shown</p>
+  return (
+    <div className="row">
+      <div className="jumbotron col-10 offset-1">
+        <h1>
+          Author Quiz
+        </h1>
+        <p>
+          Select the book written by the author shown
+        </p>
+      </div>
     </div>
-  </div>);
+  );
 }
 
-function Turn({author, books}) {
-  return (<div className="row turn" style={{backgroundColor: "white"}}>
-    <div className="col-4 offset-1">
-      <img src={author.imageUrl} className="authorimage" alt="Author"/>
+function returnTitle(title) {
+  return (
+    <p>
+      {title}
+    </p>
+  );
+}
+
+function Turn({ author, books }) {
+  return (
+    <div className="row turn" style={{ backgroundColor: 'white' }}>
+      <div className="col-4 offset-1">
+        <img src={author.imageUrl} className="authorimage" alt="Author" />
+      </div>
+      <div className="col-6">
+        {books.map(title => returnTitle(title))}
+      </div>
     </div>
-    <div className="col-6">
-      {books.map((title) => <p>{title}</p>)}
-    </div>
-  </div>);
+  );
 }
 
 function Continue() {
@@ -27,13 +43,19 @@ function Continue() {
 }
 
 function Footer() {
-  return (<div id="footer" className="row">
-    <div className="col-12">
-      <p className="text-muted credit">
-        All images are from <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> and are in the public domain. 
-      </p>
+  return (
+    <div id="footer" className="row">
+      <div className="col-12">
+        <p className="text-muted credit">
+          All images are from
+          <a href="http://commons.wikimedia.org/wiki/Main_Page">
+            Wikimedia Commons
+          </a>
+          and are in the public domain.
+        </p>
+      </div>
     </div>
-  </div>);
+  );
 }
 
 class AuthorQuiz extends Component {
