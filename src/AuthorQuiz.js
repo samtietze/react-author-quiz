@@ -17,14 +17,6 @@ function Hero() {
   );
 }
 
-function returnTitle(title) {
-  return (
-    <p>
-      {title}
-    </p>
-  );
-}
-
 function Turn({ author, books }) {
   return (
     <div className="row turn" style={{ backgroundColor: 'white' }}>
