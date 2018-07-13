@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { shuffle, sample } from 'underscore';
 import AuthorQuiz from './AuthorQuiz';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -42,14 +43,22 @@ const authors = [
     imageUrl: 'images/authors/williamshakespeare.jpg',
     imageSource: 'Wikimedia Commons',
     books: ['Hamlet', 'Macbeth', 'Romeo and Juliet'],
-  }
+  },
 ];
 
+function getTurnData(authors) {
+  const allBooks = authors.reduce((author, bookList) => author.concat(bookList.books), []);
+  const fourRandBooks = shuffle(allBooks).slice(0, 4);
+  const answer = sample(fourRandBooks);
+
+  return {
+    books: fourRandBooks,
+    author: authors.find(author => author.books.some(title => title === answer)),
+  };
+}
+
 const state = {
-  turnData: {
-    author: authors[0],
-    books: authors[0].books,
-  },
+  turnData: getTurnData(authors),
 };
 
 ReactDOM.render(<AuthorQuiz {...state} />, document.getElementById('root'));
